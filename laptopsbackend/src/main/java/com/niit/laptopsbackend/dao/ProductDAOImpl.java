@@ -8,17 +8,17 @@ import org.springframework.stereotype.Repository;
 
 import com.niit.laptopsbackend.model.Product;
 @Repository("productDAO")
-public class ProductDAOImpl implements ProductDAO {
+public class ProductDAOImpl implements IProductDAO {
 
 	@Autowired
 	SessionFactory sessionFactory;
 	
 	
-	public ProductDAOImpl(SessionFactory sessionFactory) {
+	/*public ProductDAOImpl(SessionFactory sessionFactory) {
 		super();
 		this.sessionFactory = sessionFactory;
 	}
-
+*/
 
 	public void saveProduct(Product product) {
 
@@ -26,6 +26,7 @@ public class ProductDAOImpl implements ProductDAO {
 		Transaction t=s.beginTransaction();
 		s.save(product);
 		t.commit();
+		
 		
 	}
 

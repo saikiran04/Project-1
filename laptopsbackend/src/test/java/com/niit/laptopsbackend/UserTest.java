@@ -9,13 +9,13 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.niit.laptopsbackend.dao.UserDAO;
+import com.niit.laptopsbackend.dao.IUserDAO;
 import com.niit.laptopsbackend.model.User;
 
 public class UserTest {
-	
+	 
 	static AnnotationConfigApplicationContext context;
-	static UserDAO userDAO;
+	static IUserDAO userDAO;
 	static User user;
 	
 	@BeforeClass
@@ -24,7 +24,7 @@ public class UserTest {
 		context=new AnnotationConfigApplicationContext();
 		context.scan("com");
 		context.refresh();
-		userDAO=(UserDAO)context.getBean("userDAO");
+		userDAO=(IUserDAO)context.getBean("userDAO");
 		
 	}
 

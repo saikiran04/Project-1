@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.niit.laptopsbackend.model.User;
 @Repository("userDAO")
-public class UserDAOImpl implements UserDAO {
+public class UserDAOImpl implements IUserDAO {
 	
 	@Autowired
 	private SessionFactory sessionFactory;

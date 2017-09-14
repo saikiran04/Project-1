@@ -10,12 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.niit.laptopsbackend.dao.ProductDAO;
-import com.niit.laptopsbackend.dao.ProductDAOImpl;
+import com.niit.laptopsbackend.dao.CategoryDAOImpl;
+import com.niit.laptopsbackend.dao.ICategoryDAO;
+import com.niit.laptopsbackend.model.Category;
 import com.niit.laptopsbackend.model.Product;
+import com.niit.laptopsbackend.model.Supplier;
 import com.niit.laptopsbackend.model.User;
 
 @Configuration
@@ -23,7 +26,7 @@ import com.niit.laptopsbackend.model.User;
 @EnableTransactionManagement
 
 public class ApplicationConfig {
-	@Bean(name="DataSource")
+	@Bean(name="dataSource")
 	public DataSource getDataSource() {
 		BasicDataSource dataSource=new BasicDataSource();
 		dataSource.setDriverClassName("org.h2.Driver");
@@ -53,22 +56,31 @@ public class ApplicationConfig {
 		sessionBuilder.addProperties(getHibernateProperties());
 		sessionBuilder.addAnnotatedClasses(Product.class);
 		sessionBuilder.addAnnotatedClasses(User.class);
+		sessionBuilder.addAnnotatedClasses(Category.class);
+		sessionBuilder.addAnnotatedClasses(Supplier.class);
 		System.out.println("session factory");
 		return sessionBuilder.buildSessionFactory();
 	}
 	
-	/*@Autowired
-	@Bean(name="productDAO")
-	public ProductDAO getProductDAO(SessionFactory sessionFactory)
+	@Autowired
+	@Bean(name="categoryDAO")
+	public ICategoryDAO getProductDAO(SessionFactory sessionFactory)
 	{
-		return new ProductDAOImpl(sessionFactory);
+		return new CategoryDAOImpl(sessionFactory);
 	}
 	
 	@Autowired
-	@Bean(name="product")
-	public Product getProduct()
+	@Bean(name="category")
+	public Category getCategry()
 	{
-		return new Product();
-	}*/
+		return new Category();
+	}
+	@Autowired
+	@Bean(name="transactionmanager")
+	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {
+		HibernateTransactionManager transactionManager=new HibernateTransactionManager(sessionFactory);
+		
+		return transactionManager;
+	}
 
 }

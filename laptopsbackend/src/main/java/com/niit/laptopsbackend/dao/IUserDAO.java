@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.niit.laptopsbackend.model.User;
 
-public interface UserDAO {
+public interface IUserDAO {
 	 
 	public boolean addUser(User user);
 	
