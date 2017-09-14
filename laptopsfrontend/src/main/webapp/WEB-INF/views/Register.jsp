@@ -10,6 +10,9 @@
 <form action="mainpage" method="post" role="form">
 <div class="form-group">
 <label for="txtname">Enter Name:</label><input type="text" name="txtname" required class="form-control">
+<label for="txtfirst">Enter First Name:</label><input type="text" name="txtfirst" required class="form-control">
+<label for="txtlast">Enter Last Name:</label><input type="text" name="txtlast" required class="form-control">
+
 <label for="txtemail">Enter Email:</label><input type="text" name="txtemail" required class="form-control">
 <label for="txtmob">Enter MobileNumber:</label><input type="text" name="txtmob" required class="form-control">
 <label for="txtpass">Enter Password:</label><input type="text" name="txtpasss" required class="form-control">

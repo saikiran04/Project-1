@@ -1,5 +1,6 @@
 package com.niit.frontend.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -7,8 +8,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HomeController {
-
-	@RequestMapping("/")
+	
+	
+		@RequestMapping("/")
 	public ModelAndView showHome()
 	{
 		 ModelAndView mv=new ModelAndView("mainpage");
@@ -18,7 +20,7 @@ public class HomeController {
 	@RequestMapping("/Login")
 	public ModelAndView showLogin()
 	{
-		 ModelAndView mv=new ModelAndView("Login");
+		 ModelAndView mv=new ModelAndView("AdminHome");
 		 
 		return mv; 
 	}
